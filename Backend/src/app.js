@@ -49,6 +49,7 @@ app.post('/api/parqueo/calcular', (req, res) => {
     tarifa:tarifa,
     tiempoUso:horas+":"+minutos,
     horasCobradas: h,
+    total:total
    });
 });
 
