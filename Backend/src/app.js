@@ -1,5 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
+import cors from "cors";
+
 
 dotenv.config();
 
@@ -10,14 +12,19 @@ const PORT = process.env.SERVER_PORT || 4000;
 
 const app = express();
 
+app.use(cors());
+app.use(express.json());
+
 app.get("/", (req, res) => {
-  res.send(`
-    <h1>${NAME}</h1>
-    <p><strong>Version:</strong> ${VERSION}</p>
-    <p><strong>Description:</strong> ${DESCRIPTION}</p>
-  `);
+  res.json({
+    name: NAME,
+    version: VERSION,
+    description: DESCRIPTION,
+    puerto: PORT
+  });
 });
 
 app.listen(PORT, () => {
   console.log(`${NAME} version ${VERSION} is running on http://localhost:${PORT}`);
 });
+
