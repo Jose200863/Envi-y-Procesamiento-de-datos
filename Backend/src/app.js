@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import cors from "cors";
 
 import parqueoRoutes from "./routes/parqueo.routes.js";
+import usuariosRoutes from "./routes/usuarios.routes.js";
 
 
 dotenv.config();
@@ -18,6 +19,8 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/api/parqueo",parqueoRoutes);
+app.use("/api/usuarios", usuariosRoutes);
+
 
 app.get("/", (req, res) => {
   res.json({
